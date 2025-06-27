@@ -15,6 +15,8 @@
       const res = await fetch("http://localhost:8080/devices");
       if (!res.ok) throw new Error("Failed to fetch devices");
       devices = await res.json();
+
+      console.log(devices);
     } catch (e) {
       if (e instanceof Error) {
         error = e.message;
@@ -80,7 +82,7 @@
             name={device.name}
             ip={device.ip}
             os={device.os}
-            room={device.room}
+            room={device.roomName}
             status={device.status}
           />
         {/each}

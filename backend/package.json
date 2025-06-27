@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc -p tsconfig.json",
-    "start": "node index.js"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
@@ -14,10 +14,15 @@
   "type": "commonjs",
   "dependencies": {
     "@fastify/cors": "^11.0.1",
+    "@libsql/client": "^0.15.9",
+    "dotenv": "^16.6.0",
+    "drizzle-orm": "^0.44.2",
     "fastify": "^5.4.0"
   },
   "devDependencies": {
     "@types/node": "^24.0.4",
+    "drizzle-kit": "^0.31.4",
+    "tsx": "^4.20.3",
     "typescript": "^5.8.3"
   }
 }
