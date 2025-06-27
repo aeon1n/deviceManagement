@@ -25,7 +25,7 @@
 {/if}
 
 <div
-    class="fixed top-0 left-0 h-full w-1/2 bg-neutral-900 z-50 transform transition-transform duration-300 ease-in-out md:hidden"
+    class="fixed top-0 left-0 h-full w-[75%] bg-neutral-900 z-50 transform transition-transform duration-300 ease-in-out md:hidden"
     class:translate-x-0={open}
     class:-translate-x-full={!open}
 >

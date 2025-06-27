@@ -1,0 +1,19 @@
+export interface Device {
+  name: string;
+  ip: string;
+  os: string;
+  room: string;
+  status: string;
+}
+
+export async function getAllDevices(): Promise<Device[]> {
+  const response = await fetch("http://localhost:8080/devices");
+
+  if (!response.ok) {
+    throw new Error(`API request failed with status ${response.status}`);
+  }
+
+  const data = await response.json();
+
+  return data as Device[];
+}

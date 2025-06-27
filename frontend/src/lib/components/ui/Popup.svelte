@@ -15,8 +15,8 @@
 </script>
 
 {#if open}
-	<div class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center">
-        <div class="bg-neutral-900 text-white rounded-md shadow-2xl w-full max-w-xl px-4 sm:px-6 py-6 sm:py-8 border border-neutral-800 mx-2">
+    <div class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center">
+        <div class="bg-neutral-900 text-white rounded-md shadow-2xl w-full max-w-xl px-4 sm:px-6 py-6 sm:py-8 border border-neutral-800 mx-2 overflow-y-auto">
             <h2 class="text-xl font-semibold text-white/90 mb-2">Add New Device</h2>
             <p class="text-sm text-white/ mb-6">Enter the details for the new device below.</p>
             
@@ -99,7 +99,7 @@
                 <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white text-sm px-5 py-2 rounded-md transition">
                 Create
                 </button>
-                <button type="button" class="bg-neutral-700 hover:bg-neutral-600 text-white text-sm px-5 py-2 rounded-md transition">
+                <button type="button" class="bg-neutral-700 hover:bg-neutral-600 text-white text-sm px-5 py-2 rounded-md transition" on:click={() => open = false}>
                 Cancel
                 </button>
             </div>
