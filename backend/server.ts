@@ -29,6 +29,16 @@ server.get("/devices", async (): Promise<Device[]> => {
     .leftJoin(roomTable, eq(deviceTable.room, roomTable.id));
 });
 
+server.post("/createDevice", async (request, reply) => {
+  try {
+    const body = request.body as Device;
+    await db.insert(deviceTable).values(body);
+    reply.code(200).send({ message: "Device created successfully" });
+  } catch (error) {
+    reply.code(500).send({ error: "Failed to create device" });
+  }
+});
+
 const start = async (): Promise<void> => {
   try {
     await server.listen({ port: 8080 });

@@ -27,6 +27,16 @@ server.get("/devices", async () => {
         .from(schema_1.deviceTable)
         .leftJoin(schema_1.roomTable, (0, drizzle_orm_1.eq)(schema_1.deviceTable.room, schema_1.roomTable.id));
 });
+server.post("/createDevice", async (request, reply) => {
+    try {
+        const body = request.body;
+        await db.insert(schema_1.deviceTable).values(body);
+        reply.code(200).send({ message: "Device created successfully" });
+    }
+    catch (error) {
+        reply.code(500).send({ error: "Failed to create device" });
+    }
+});
 const start = async () => {
     try {
         await server.listen({ port: 8080 });
