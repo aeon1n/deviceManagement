@@ -12,7 +12,7 @@ const drizzle_orm_1 = require("drizzle-orm");
 const db = (0, libsql_1.drizzle)(process.env.DB_FILE_NAME);
 const server = (0, fastify_1.default)();
 server.register(cors_1.default, {
-    origin: "http://localhost:5173",
+    origin: ["http://localhost:5173", "http://192.168.2.136:5173"],
 });
 server.get("/devices", async () => {
     return db
@@ -21,17 +21,17 @@ server.get("/devices", async () => {
         ip: schema_1.deviceTable.ip,
         os: schema_1.deviceTable.os,
         status: schema_1.deviceTable.status,
-        roomId: schema_1.deviceTable.room,
+        roomId: schema_1.deviceTable.roomId,
         roomName: schema_1.roomTable.name,
     })
         .from(schema_1.deviceTable)
-        .leftJoin(schema_1.roomTable, (0, drizzle_orm_1.eq)(schema_1.deviceTable.room, schema_1.roomTable.id));
+        .leftJoin(schema_1.roomTable, (0, drizzle_orm_1.eq)(schema_1.deviceTable.roomId, schema_1.roomTable.id));
 });
 server.post("/createDevice", async (request, reply) => {
     try {
         const body = request.body;
         await db.insert(schema_1.deviceTable).values(body);
-        reply.code(200).send({ message: "Device created successfully" });
+        reply.code(200);
     }
     catch (error) {
         reply.code(500).send({ error: "Failed to create device" });

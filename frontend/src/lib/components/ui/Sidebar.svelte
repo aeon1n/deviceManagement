@@ -32,7 +32,7 @@
    
 </div>
 
-<div class="hidden md:block">
+<div class="hidden md:block text-sm">
     <div class="h-12 border-b border-neutral-800 flex items-center justify-center gap-3 px-6 shadow-md text-lg">
         <select
             class="bg-neutral-950 text-neutral-200 px-3 py-2 focus:outline-none transition-colors duration-150 font-mono w-full"
@@ -67,7 +67,7 @@
                     Read the Docs
                 </a>
             </button>
-            <h3 class="uppercase text-sm font-bold text-neutral-500 mt-6">System</h3>
+            <h3 class="uppercase text-xs font-bold text-neutral-500 mt-6">System</h3>
             <nav class="pt-2">
                 <ul class="flex flex-col gap-1">
                     <li class="cursor-pointer bg-emerald-600/25 h-full w-full py-1 px-3 rounded-sm text-emerald-600 font-bold flex items-center gap-2">

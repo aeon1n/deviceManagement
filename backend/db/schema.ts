@@ -11,7 +11,7 @@ export const deviceTable = sqliteTable("devices", {
   name: text("name").notNull(),
   ip: text("ip").notNull(),
   os: text("os").notNull(),
-  room: int("room").references(() => roomTable.id, {
+  roomId: int("room").references(() => roomTable.id, {
     onDelete: "set null",
     onUpdate: "cascade",
   }),

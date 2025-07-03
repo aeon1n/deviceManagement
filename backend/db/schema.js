@@ -12,7 +12,7 @@ exports.deviceTable = (0, sqlite_core_1.sqliteTable)("devices", {
     name: (0, sqlite_core_1.text)("name").notNull(),
     ip: (0, sqlite_core_1.text)("ip").notNull(),
     os: (0, sqlite_core_1.text)("os").notNull(),
-    room: (0, sqlite_core_1.int)("room").references(() => exports.roomTable.id, {
+    roomId: (0, sqlite_core_1.int)("room").references(() => exports.roomTable.id, {
         onDelete: "set null",
         onUpdate: "cascade",
     }),

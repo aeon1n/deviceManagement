@@ -12,7 +12,7 @@ const db = drizzle(process.env.DB_FILE_NAME!);
 const server = fastify();
 
 server.register(cors, {
-  origin: "http://localhost:5173",
+  origin: ["http://localhost:5173", "http://192.168.2.136:5173"],
 });
 
 server.get("/devices", async (): Promise<Device[]> => {
@@ -22,20 +22,28 @@ server.get("/devices", async (): Promise<Device[]> => {
       ip: deviceTable.ip,
       os: deviceTable.os,
       status: deviceTable.status,
-      roomId: deviceTable.room,
+      roomId: deviceTable.roomId,
       roomName: roomTable.name,
     })
     .from(deviceTable)
-    .leftJoin(roomTable, eq(deviceTable.room, roomTable.id));
+    .leftJoin(roomTable, eq(deviceTable.roomId, roomTable.id));
 });
 
 server.post("/createDevice", async (request, reply) => {
   try {
     const body = request.body as Device;
     await db.insert(deviceTable).values(body);
-    reply.code(200).send({ message: "Device created successfully" });
+    reply.code(200);
   } catch (error) {
     reply.code(500).send({ error: "Failed to create device" });
+  }
+});
+
+server.post("/rooms", async (request, reply) => {
+  try {
+    let data = db.select().from(roomTable);
+  } catch (error) {
+    reply.code(500).send({ error: "Failed to fetch Rooms" });
   }
 });
 
