@@ -8,8 +8,8 @@
   });
 
 </script>
-<h1 class="text-2xl font-bold mb-1">Manage Devices</h1>
-<h2 class="text-lg text-neutral-400 mb-6">Easily add, edit, or remove your devices below.</h2>
+<h1 class="text-3xl font-bold mb-1 text-emerald-600">Manage Devices</h1>
+<h2 class="text-lg text-neutral-300 mb-6">Easily add, edit, or remove your devices below.</h2>
 
 <div class="overflow-x-auto">
   <table class="table-auto  w-full">

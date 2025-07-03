@@ -58,7 +58,7 @@ roomId = null;
 
 {#if open}
 <div class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center">
-    <div class="bg-neutral-900 text-white rounded-md shadow-2xl w-full max-w-xl px-4 sm:px-6 py-6 sm:py-8 border border-neutral-800 mx-2 overflow-y-auto">
+    <div class="bg-neutral-950 text-white rounded-md shadow-2xl w-full max-w-xl px-4 sm:px-6 py-6 sm:py-8 border border-neutral-800 mx-2 overflow-y-auto">
         <h2 class="text-xl font-semibold text-white/90 mb-2">Add New Device</h2>
         <p class="text-sm text-white/ mb-6">Enter the details for the new device below.</p>
 
@@ -71,7 +71,7 @@ roomId = null;
             id="computerName"
             bind:value={name}
             placeholder="e.g. PC-101"
-            class="w-full bg-neutral-800 text-white border border-neutral-700 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+            class="w-full bg-neutral-900 text-white border border-neutral-700 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
             />
         </div>
 
@@ -83,7 +83,7 @@ roomId = null;
             id="ipAddress"
             bind:value={ip}
             placeholder="e.g. 192.168.1.101"
-            class="w-full bg-neutral-800 text-white border border-neutral-700 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+            class="w-full bg-neutral-900 text-white border border-neutral-700 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
             />
         </div>
 
@@ -93,7 +93,7 @@ roomId = null;
             <select
             id="os"
             bind:value={os}
-            class="w-full bg-neutral-800 text-white border border-neutral-700 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+            class="w-full bg-neutral-900 text-white border border-neutral-700 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
             >
             <option value="">Select OS</option>
             <option value="Windows 11">Windows 11</option>
@@ -108,7 +108,7 @@ roomId = null;
             <select
             id="room"
             bind:value={roomId}
-            class="w-full bg-neutral-800 text-white border border-neutral-700 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+            class="w-full bg-neutral-900 text-white border border-neutral-700 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
             >
             <option value="">Select Room</option>
             <option value="1">Lab A</option>

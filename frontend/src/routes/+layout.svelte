@@ -7,15 +7,26 @@
 	let { children } = $props();
 </script>
 
-<header>
-	<Navbar />
-</header>
-<main class="flex flex-col md:flex-row px-4 md:px-8 mt-6">
-	<aside class="basis-1/6">
-		<Sidebar />
-	</aside>
-	<div class="basis-5/6 md:pl-12">
-		{@render children()}
-	</div>
-</main>
+<div class="flex flex-col md:flex-row min-h-screen bg-neutral-950 text-neutral-200">
+  <aside
+    class="w-full md:w-1/6
+           h-auto md:h-screen
+           border-r-2 border-neutral-800
+           overflow-auto
+           "
+  >
+    <Sidebar />
+  </aside>
+
+  <main class="flex-1 flex flex-col min-h-screen">
+    <header class="sticky top-0 z-10 border-b-2 border-neutral-800 h-12">
+      <Navbar />
+    </header>
+
+    <div class="flex-1 overflow-auto p-4 md:p-8">
+      {@render children()}
+    </div>
+  </main>
+</div>
+
 <Popup />
