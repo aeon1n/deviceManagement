@@ -9,7 +9,7 @@
 
 <div class="flex flex-col md:flex-row min-h-screen bg-neutral-950 text-neutral-200">
   <aside
-    class="w-full md:w-1/6
+    class="w-full md:w-2/10
            h-auto md:h-screen
            border-r-2 border-neutral-800
            overflow-auto

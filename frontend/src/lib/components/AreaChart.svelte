@@ -12,8 +12,8 @@
         const options: ApexChartsType.ApexOptions = {
             chart: {
                 type: "area",
-                height: 20,
-                width: 120,
+                height: 40,
+                width: "100%",
                 sparkline: { enabled: true }, 
             },
             series: [
