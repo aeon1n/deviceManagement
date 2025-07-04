@@ -1,4 +1,5 @@
 export interface Device {
+  id: number;
   name: string;
   ip: string;
   os: string;
@@ -26,6 +27,16 @@ export async function createDevice(device: Device): Promise<void> {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(device),
+  });
+
+  if (!req.ok) {
+    throw new Error(`API request failed with status ${req.status}`);
+  }
+}
+
+export async function deleteDevice(id: number): Promise<void> {
+  const req = await fetch(`http://localhost:8080/delete/${id}`, {
+    method: "delete",
   });
 
   if (!req.ok) {

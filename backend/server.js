@@ -13,10 +13,12 @@ const db = (0, libsql_1.drizzle)(process.env.DB_FILE_NAME);
 const server = (0, fastify_1.default)();
 server.register(cors_1.default, {
     origin: ["http://localhost:5173", "http://192.168.2.136:5173"],
+    methods: ["GET", "POST", "DELETE", "PUT", "OPTIONS"],
 });
 server.get("/devices", async () => {
     return db
         .select({
+        id: schema_1.deviceTable.id,
         name: schema_1.deviceTable.name,
         ip: schema_1.deviceTable.ip,
         os: schema_1.deviceTable.os,
@@ -35,6 +37,25 @@ server.post("/createDevice", async (request, reply) => {
     }
     catch (error) {
         reply.code(500).send({ error: "Failed to create device" });
+    }
+});
+server.post("/rooms", async (request, reply) => {
+    try {
+        let data = db.select().from(schema_1.roomTable);
+    }
+    catch (error) {
+        reply.code(500).send({ error: "Failed to fetch Rooms" });
+    }
+});
+server.delete("/delete/:id", async (request, reply) => {
+    const { id } = request.params;
+    try {
+        await db.delete(schema_1.deviceTable).where((0, drizzle_orm_1.eq)(schema_1.deviceTable.id, id));
+        return reply.code(204).send();
+    }
+    catch (error) {
+        console.log(error);
+        return reply.code(500).send({ error: "Internal Server Error" });
     }
 });
 const start = async () => {

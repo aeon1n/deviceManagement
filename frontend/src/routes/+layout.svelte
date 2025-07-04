@@ -8,18 +8,11 @@
 </script>
 
 <div class="flex flex-col md:flex-row min-h-screen bg-neutral-950 text-neutral-200">
-  <aside
-    class="w-full md:w-2/10
-           h-auto md:h-screen
-           border-r-2 border-neutral-800
-           overflow-auto
-           "
-  >
+
     <Sidebar />
-  </aside>
 
   <main class="flex-1 flex flex-col min-h-screen">
-    <header class="sticky top-0 z-10 border-b-2 border-neutral-800 h-12">
+    <header class="sticky top-0 z-10 border-b-2 border-neutral-800 h-14">
       <Navbar />
     </header>
 

@@ -3,7 +3,7 @@ import type { Device } from "$lib/api/Devices.svelte";
 import { getAllDevices } from "$lib/api/Devices.svelte";
 
 const devices = writable<Device[]>([]);
-const loading = writable<boolean>(false);
+const loading = writable<boolean>(true);
 const error = writable<string | null>(null);
 
 async function fetchDevices() {

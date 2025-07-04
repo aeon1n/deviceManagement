@@ -12,13 +12,20 @@
     }
 </script>
 
-<nav class="w-full h-full flex justify-end items-center px-4 md:px-8 text-sm">
+<nav class="w-full h-full flex justify-between items-center px-4 md:px-8 text-sm bg-neutral-950">
+  <div class="h-full flex items-center">
+    <button on:click={toggleOpen} aria-label="open sidebar" class="lg:hidden">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+      </svg>
+    </button>
+  </div>
 <div class="flex gap-2 items-center">
   <button
     aria-label="notifications"
-    class="cursor-pointer bg-neutral-600/25 px-2 py-2 rounded-md text-gray-400 hover:bg-neutral-500/30 hover:text-gray-200 transition-all duration-150 ease-in-out"
+    class="cursor-pointer bg-neutral-600/25 h-8 px-2 py-2 rounded-md text-gray-400 hover:bg-neutral-500/30 hover:text-gray-200 transition-all duration-150 ease-in-out"
   >
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-3">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4">
       <path
         fill-rule="evenodd"
         d="M5.25 9a6.75 6.75 0 0 1 13.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 0 1-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 1 1-7.48 0 24.585 24.585 0 0 1-4.831-1.244.75.75 0 0 1-.298-1.205A8.217 8.217 0 0 0 5.25 9.75V9Zm4.502 8.9a2.25 2.25 0 1 0 4.496 0 25.057 25.057 0 0 1-4.496 0Z"
@@ -28,10 +35,10 @@
   </button>
   <button
     aria-label="create device"
-    class="cursor-pointer bg-neutral-600/25 px-2 py-2 rounded-md text-gray-400 hover:bg-neutral-500/30 hover:text-gray-200 transition-all duration-150 ease-in-out"
+    class="cursor-pointer bg-neutral-600/25 h-8 px-2 py-2 rounded-md text-gray-400 hover:bg-neutral-500/30 hover:text-gray-200 transition-all duration-150 ease-in-out"
     on:click={openCreatePopUp}
     >
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-3">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4">
       <path
         fill-rule="evenodd"
         d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z"
@@ -40,7 +47,7 @@
     </svg>
   </button>
   <span
-    class="cursor-pointer group font-semibold text-emerald-500 flex gap-1 items-center justify-center bg-neutral-600/25 px-4 py-1 rounded-md hover:bg-neutral-500/30 transition-colors duration-150 ease-in-out cursor-default"
+    class="cursor-pointer h-8 group font-semibold text-emerald-500 flex gap-1 items-center justify-center bg-neutral-600/25 px-4 py-1 rounded-md hover:bg-neutral-500/30 transition-colors duration-150 ease-in-out cursor-default"
   >
     <i class="transition-transform group-hover:scale-105">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4">
@@ -51,7 +58,7 @@
         />
       </svg>
     </i>
-    <span class="group-hover:underline transition-all duration-150">helloworld@gmail.com</span>
+    <span class="group-hover:underline transition-all duration-150 max-w-[110px] md:max-w-full truncate inline-block align-bottom">helloworld@gmail.com</span>
   </span>
 </div>
 </nav>
