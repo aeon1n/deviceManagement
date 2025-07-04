@@ -33,13 +33,13 @@
           </span>
           {status === "online" ? "Online":"Offline"}
         </span>
-        <h3 class="text-lg font-semibold text-white mt-2">{name}</h3>
+        <h3 class="md:text-lg font-semibold text-white mt-2">{name}</h3>
         <div>
           <a href="/" class="text-sm font-medium hover:underline">{ip}</a>
           <span>&#183;</span>
           <a href="/" class="text-sm font-medium hover:underline">Room {room}</a>
         </div>
-        <span class="text-sm font-medium hover:underline">{os}</span>
+        <span class="text-sm font-medium">OS: {os}</span>
       </div>
       <div class="flex gap-2">
         <button aria-label="Start" class="p-2 rounded-md text-blue-500 hover:bg-blue-500/10 transition cursor-pointer">

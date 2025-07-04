@@ -35,7 +35,7 @@
             <h3 class="uppercase text-xs font-bold text-neutral-500 mt-6">System</h3>
             <nav class="pt-2">
                 <ul class="flex flex-col gap-1">
-                    <li class="cursor-pointer bg-emerald-600/25 h-full w-full py-1 px-3 rounded-sm text-emerald-600 font-bold flex items-center gap-2">
+                    <li class="cursor-pointer hover:bg-neutral-600/25 h-full w-full py-1 px-3 rounded-sm text-neutral-400 font-bold flex items-center gap-2">
                         <span>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4 flex-shrink-0">
                                 <path fill-rule="evenodd" d="M3 2.25a.75.75 0 0 1 .75.75v.54l1.838-.46a9.75 9.75 0 0 1 6.725.738l.108.054A8.25 8.25 0 0 0 18 4.524l3.11-.732a.75.75 0 0 1 .917.81 47.784 47.784 0 0 0 .005 10.337.75.75 0 0 1-.574.812l-3.114.733a9.75 9.75 0 0 1-6.594-.77l-.108-.054a8.25 8.25 0 0 0-5.69-.625l-2.202.55V21a.75.75 0 0 1-1.5 0V3A.75.75 0 0 1 3 2.25Z" clip-rule="evenodd" />
@@ -54,7 +54,7 @@
                             Rooms
                         </a>
                     </li>
-                    <li class="cursor-pointer hover:bg-neutral-600/25 h-full w-full py-1 px-3 rounded-sm text-neutral-400 font-bold flex items-center gap-2">
+                    <li class="cursor-pointer bg-emerald-600/25 h-full w-full py-1 px-3 rounded-sm text-emerald-600 font-bold flex items-center gap-2">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4 flex-shrink-0">
                             <path fill-rule="evenodd" d="M2.25 5.25a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3V15a3 3 0 0 1-3 3h-3v.257c0 .597.237 1.17.659 1.591l.621.622a.75.75 0 0 1-.53 1.28h-9a.75.75 0 0 1-.53-1.28l.621-.622a2.25 2.25 0 0 0 .659-1.59V18h-3a3 3 0 0 1-3-3V5.25Zm1.5 0v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5Z" clip-rule="evenodd" />
                         </svg>

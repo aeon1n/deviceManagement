@@ -35,7 +35,7 @@ This repository is a proof-of-concept and learning resource to:
 
 ## 📸 Screenshots
 
-![Device Management](https://placehold.co/600x400?text=Device+Management)
-![Device Management](https://placehold.co/600x400?text=Device+Management)
-![Responsive Design](https://placehold.co/600x400?text=Responsive+Design)
-![Responsive Design](https://placehold.co/600x400?text=Responsive+Design)
+![Device Management](/frontend/static/screenshots/frontpage.PNG)
+![Device Management](/frontend/static/screenshots/createview.PNG)
+![Responsive Design](/frontend/static/screenshots/responsive1.PNG)
+![Responsive Design](/frontend/static/screenshots/responsive2.PNG)

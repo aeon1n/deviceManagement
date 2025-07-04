@@ -39,9 +39,11 @@ server.post("/createDevice", async (request, reply) => {
         reply.code(500).send({ error: "Failed to create device" });
     }
 });
-server.post("/rooms", async (request, reply) => {
+server.get("/rooms", async (request, reply) => {
     try {
         let data = db.select().from(schema_1.roomTable);
+        reply.code(200);
+        return data;
     }
     catch (error) {
         reply.code(500).send({ error: "Failed to fetch Rooms" });
