@@ -1,22 +1,45 @@
 <script lang="ts">
-import { isOpenCreatePopUp } from "$lib/menu.svelte";
-import { onMount } from "svelte";
-import { createDevice } from "$lib/api/Devices.svelte";
-import { fetchDevices } from "$lib/stores/deviceStore";
-import { getRooms, type Room } from "$lib/api/Rooms.svelte";
+    import { deviceFormState } from "$lib/menu.svelte";
+    import { onMount } from "svelte";
+    import { createDevice, updateDevice } from "$lib/api/Devices.svelte";
+    import { fetchDevices } from "$lib/stores/deviceStore";
+    import { getRooms, type Room } from "$lib/api/Rooms.svelte";
+    import { get } from "svelte/store";
 
-let roomsLoading = $state(true);
+    let roomsLoading = $state(true);
+    let id: number;
+    let name = $state("");
+    let ip = $state("");
+    let os = $state("");
+    let roomId = $state<number | null>(null);
 
-let name = $state("");
-let ip = $state("");
-let os = $state("");
-let roomId = $state<number | null>(null);
+    $effect(() => {
+        fetchAllRooms();
 
-let rooms: Room[] = $state([]);
+        if ($deviceFormState.isEditing && $deviceFormState.device) {
 
-function getRandomStatus(): "online" | "offline" {
-    return Math.random() < 0.5 ? "online" : "offline";
-}
+            const d = $deviceFormState.device;
+            id = Number(d.id);
+            name = d.name;
+            ip = d.ip;
+            os = d.os;
+            roomId = d.roomId;
+        }
+    });
+
+    export function closePopup() {
+        deviceFormState.set({
+            isOpen: false,
+            isEditing: false,
+            device: undefined,
+        });
+    }
+
+    let rooms: Room[] = $state([]);
+
+    function getRandomStatus(): "online" | "offline" {
+        return Math.random() < 0.5 ? "online" : "offline";
+    }
 
     async function fetchAllRooms() {
         if (rooms.length > 0 && !roomsLoading) {
@@ -33,46 +56,50 @@ function getRandomStatus(): "online" | "offline" {
         }
     }
 
-onMount(() => {
-    const handler = (e: KeyboardEvent) => {
-        if (e.key === "Escape") isOpenCreatePopUp.set(false);
-    };
-    window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
-});
+    onMount(() => {
+        const handler = (e: KeyboardEvent) => {
+            if (e.key === "Escape") closePopup();
+        };
+        window.addEventListener("keydown", handler);
+        return () => window.removeEventListener("keydown", handler);
+    });
 
-async function onSubmitHandler(e: Event) {
-    e.preventDefault();
+    async function onSubmitHandler(e: Event) {
+        e.preventDefault();
 
-    if (!name || !ip || !os || !roomId) {
-    alert("Bitte alle Felder ausfüllen!");
-    return;
-}
+        if (!name || !ip || !os || !roomId) {
+        alert("Bitte alle Felder ausfüllen!");
+        return;
+    }
 
-const status = getRandomStatus();
+    const status = getRandomStatus();
 
-await createDevice({
-    name,
-    ip,
-    os,
-    roomId: Number(roomId),
-    status,
-});
+    if($deviceFormState.isEditing){
+        await updateDevice({id,name,ip,os,roomId: Number(roomId), status})
+    }else {
+        await createDevice({
+            name,
+            ip,
+            os,
+            roomId: Number(roomId),
+            status,
+        });
+    }
 
-await fetchDevices();
-    resetForm();
-    isOpenCreatePopUp.set(false);
-}
+    await fetchDevices();
+        resetForm();
+        closePopup();
+    }
 
-function resetForm() {
-    name = "";
-    ip = "";
-    os = "";
-    roomId = null;
-}
+    function resetForm() {
+        name = "";
+        ip = "";
+        os = "";
+        roomId = null;
+    }
 </script>
 
-{#if $isOpenCreatePopUp}
+{#if $deviceFormState.isOpen}
 <div class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center">
     <div class="bg-neutral-950 text-white rounded-md shadow-2xl w-full max-w-xl px-4 sm:px-6 py-6 sm:py-8 border border-neutral-800 mx-2 overflow-y-auto">
         <h2 class="text-xl font-semibold text-white/90 mb-2">Add New Device</h2>
@@ -153,11 +180,11 @@ function resetForm() {
 
         <!-- Actions -->
         <div class="flex justify-end gap-3 pt-4">
-            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white text-sm px-5 py-2 rounded-md transition">
-            Create
-            </button>
-            <button type="button" class="bg-neutral-700 hover:bg-neutral-600 text-white text-sm px-5 py-2 rounded-md transition" onclick={() => isOpenCreatePopUp.set(false)}>
+            <button type="button" class="cursor-pointer bg-neutral-700 hover:bg-neutral-600 text-white text-sm px-5 py-2 rounded-md transition" onclick={closePopup}>
             Cancel
+            </button>
+            <button type="submit" class="cursor-pointer bg-blue-600 hover:bg-blue-700 text-white text-sm px-5 py-2 rounded-md transition">
+            Create
             </button>
         </div>
         </form>

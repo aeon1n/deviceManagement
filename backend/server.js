@@ -13,7 +13,7 @@ const db = (0, libsql_1.drizzle)(process.env.DB_FILE_NAME);
 const server = (0, fastify_1.default)();
 server.register(cors_1.default, {
     origin: ["http://localhost:5173", "http://192.168.2.136:5173"],
-    methods: ["GET", "POST", "DELETE", "PUT", "OPTIONS"],
+    methods: ["GET", "POST", "DELETE", "PUT", "PATCH"],
 });
 server.get("/devices", async () => {
     return db
@@ -58,6 +58,17 @@ server.delete("/delete/:id", async (request, reply) => {
     catch (error) {
         console.log(error);
         return reply.code(500).send({ error: "Internal Server Error" });
+    }
+});
+server.patch("/update/:id", async (request, reply) => {
+    const { id } = request.params;
+    const body = request.body;
+    try {
+        await db.update(schema_1.deviceTable).set(body).where((0, drizzle_orm_1.eq)(schema_1.deviceTable.id, id));
+        return reply.code(200).send({ message: "Device updated successfully" });
+    }
+    catch (error) {
+        return reply.code(500).send({ error: "Failed to update device" });
     }
 });
 const start = async () => {

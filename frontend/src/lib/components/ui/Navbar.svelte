@@ -1,10 +1,10 @@
 <script lang="ts">
-    import { isOpen } from '$lib/menu.svelte';
+    import { deviceFormState, isOpen } from '$lib/menu.svelte';
     import { isOpenCreatePopUp } from '$lib/menu.svelte';
     import { get } from 'svelte/store';
 
     function openCreatePopUp() {
-        isOpenCreatePopUp.update(value => !value);
+        deviceFormState.update(d => ({...d, isOpen: true}))
     }
 
     function toggleOpen() {
@@ -14,7 +14,7 @@
 
 <nav class="w-full h-full flex justify-between items-center px-4 md:px-8 text-sm bg-neutral-950">
   <div class="h-full flex items-center">
-    <button on:click={toggleOpen} aria-label="open sidebar" class="lg:hidden">
+    <button onclick={toggleOpen} aria-label="open sidebar" class="lg:hidden">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
       </svg>
@@ -36,7 +36,7 @@
   <button
     aria-label="create device"
     class="cursor-pointer bg-neutral-600/25 h-8 px-2 py-2 rounded-md text-gray-400 hover:bg-neutral-500/30 hover:text-gray-200 transition-all duration-150 ease-in-out"
-    on:click={openCreatePopUp}
+    onclick={openCreatePopUp}
     >
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4">
       <path

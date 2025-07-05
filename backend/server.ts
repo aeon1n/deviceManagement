@@ -13,7 +13,7 @@ const server = fastify();
 
 server.register(cors, {
   origin: ["http://localhost:5173", "http://192.168.2.136:5173"],
-  methods: ["GET", "POST", "DELETE", "PUT", "OPTIONS"],
+  methods: ["GET", "POST", "DELETE", "PUT", "PATCH"],
 });
 
 server.get("/devices", async (): Promise<Device[]> => {
@@ -61,6 +61,18 @@ server.delete("/delete/:id", async (request, reply) => {
   } catch (error) {
     console.log(error);
     return reply.code(500).send({ error: "Internal Server Error" });
+  }
+});
+
+server.patch("/update/:id", async (request, reply) => {
+  const { id } = request.params as { id: number };
+  const body = request.body as Partial<Device>;
+
+  try {
+    await db.update(deviceTable).set(body).where(eq(deviceTable.id, id));
+    return reply.code(200).send({ message: "Device updated successfully" });
+  } catch (error) {
+    return reply.code(500).send({ error: "Failed to update device" });
   }
 });
 

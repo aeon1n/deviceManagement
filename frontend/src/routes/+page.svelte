@@ -35,14 +35,7 @@
       </div>
     {:else}
       {#each $devices as device}
-        <Devices
-          id={device.id}
-          name={device.name}
-          ip={device.ip}
-          os={device.os}
-          room={device.roomName}
-          status={device.status}
-        />
+        <Devices device={device} />
       {/each}
     {/if}
   </div>

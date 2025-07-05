@@ -34,6 +34,24 @@ export async function createDevice(device: Device): Promise<void> {
   }
 }
 
+export async function updateDevice(device: Device): Promise<void> {
+  if (device.id === undefined || device.id === null) {
+    throw new Error("Device id is required for update.");
+  }
+
+  const req = await fetch(`http://localhost:8080/update/${device.id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(device),
+  });
+
+  if (!req.ok) {
+    throw new Error(`API request failed with status ${req.status}`);
+  }
+}
+
 export async function deleteDevice(id: number): Promise<void> {
   const req = await fetch(`http://localhost:8080/delete/${id}`, {
     method: "delete",
