@@ -100,8 +100,22 @@
 </script>
 
 {#if $deviceFormState.isOpen}
-<div class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center">
-    <div class="bg-neutral-950 text-white rounded-md shadow-2xl w-full max-w-xl px-4 sm:px-6 py-6 sm:py-8 border border-neutral-800 mx-2 overflow-y-auto">
+<div
+    class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center"
+    role="button"
+    tabindex="0"
+    aria-label="Close popup"
+    onclick={closePopup}
+    onkeydown={(e) => { if (e.key === "Enter" || e.key === " ") closePopup(); }}
+>
+    <div
+        class="bg-neutral-950 text-white rounded-md shadow-2xl w-full max-w-xl px-4 sm:px-6 py-6 sm:py-8 border border-neutral-800 mx-2 overflow-y-auto"
+        role="dialog"
+        aria-modal="true"
+        onclick={(e) => e.stopPropagation()}
+        tabindex="0"
+        onkeydown={(e) => e.stopPropagation()}
+    >
         <h2 class="text-xl font-semibold text-white/90 mb-2">Add New Device</h2>
         <p class="text-sm text-white/ mb-6">Enter the details for the new device below.</p>
 
