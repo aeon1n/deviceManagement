@@ -12,7 +12,7 @@ const db = drizzle(process.env.DB_FILE_NAME!);
 const server = fastify();
 
 server.register(cors, {
-  origin: ["http://localhost:5173", "http://192.168.2.136:5173"],
+  origin: ["http://localhost:3000"],
   methods: ["GET", "POST", "DELETE", "PUT", "PATCH"],
 });
 
@@ -78,7 +78,7 @@ server.patch("/update/:id", async (request, reply) => {
 
 const start = async (): Promise<void> => {
   try {
-    await server.listen({ port: 8080 });
+    await server.listen({ port: 8080, host: "0.0.0.0" });
   } catch (err) {
     server.log.error(err);
     process.exit(1);
